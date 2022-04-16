@@ -55,17 +55,7 @@ jobs:
         # Prefix the list here with "+" to use these queries and those in the config file.
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
-    - name: Compile with Gradle with Build Scan
-      if: ${{ matrix.language == 'java' && github.repository_owner == 'gradle' }}
-      run: ./gradlew --init-script .github/workflows/codeql-analysis.init.gradle -DcacheNode=us -S testClasses
-      env:
-        # Set the GRADLE_ENTERPRISE_ACCESS_KEY so that Gradle Build Scans are generated
-        GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
-
-    #- name: Compile with Gradle without Build Scan
-     # if: ${{ matrix.language == 'java' && github.repository_owner != 'gradle' }}
-      #run: ./gradlew --init-script .github/workflows/codeql-analysis.init.gradle -S testClasses
-
+    
     - name: Cleanup Gradle Daemons
       run: ./gradlew --stop
       if: ${{ matrix.language == 'java' }}
@@ -77,14 +67,13 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    #- run: |
-    #   make bootstrap
-    #   make release
+    - run: |
+       make bootstrap
+       make release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-      with:
-        config-file: ./.github/codeql/codeql-config.yml
+      
 
     - name: Cleanup Gradle Cache
       # Cleans up the Gradle caches before being cached
