@@ -15,6 +15,6 @@ public class AppTest{
         //Arrange
         App myApp = new App();
         //Act and Assert
-        assertNotNull(myApp.getGreetings(), "app should have a greeting");
+        assertNull(myApp.getGreetings(), "app should have a greeting");
     }
 }
