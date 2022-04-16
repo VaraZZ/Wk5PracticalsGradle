@@ -62,9 +62,9 @@ jobs:
         # Set the GRADLE_ENTERPRISE_ACCESS_KEY so that Gradle Build Scans are generated
         GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
 
-    - name: Compile with Gradle without Build Scan
-      if: ${{ matrix.language == 'java' && github.repository_owner != 'gradle' }}
-      run: ./gradlew --init-script .github/workflows/codeql-analysis.init.gradle -S testClasses
+    #- name: Compile with Gradle without Build Scan
+     # if: ${{ matrix.language == 'java' && github.repository_owner != 'gradle' }}
+      #run: ./gradlew --init-script .github/workflows/codeql-analysis.init.gradle -S testClasses
 
     - name: Cleanup Gradle Daemons
       run: ./gradlew --stop
