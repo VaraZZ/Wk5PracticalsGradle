@@ -11,6 +11,10 @@ jobs:
      steps:
         - name: Checkout ️
           uses: actions/checkout@v2
+          
+       # Make gradlew executable
+        - name: Make gradlew executable
+          run: chmod +x ./gradlew
         - name: Build Javadocs
           run: |
             echo "Building javadocs with gradle"
