@@ -21,11 +21,11 @@ jobs:
             echo "Building javadocs with gradle"
             ./gradlew javadoc
             echo "Moving to javadocs directory:"
-            cd build//docs/javadoc/
+            cd  app/build/docs/javadoc/
             echo "Creating .nojekyll to have Github pages deploy html as is:"
             touch .nojekyll
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@4.0.0
           with:
             branch: gh-pages # The branch the action should deploy to.
-            folder: build/docs/javadoc/ # The folder the action should deploy.
+            folder: app/build/docs/javadoc/ # The folder the action should deploy.
