@@ -22,6 +22,10 @@ jobs:
         
       - name: Build with Gradle
         run: ./gradlew build
+        
+      - name: Test with Gradle
+        run: ./gradlew test
+        
       - name: Archive test report
         uses: actions/upload-artifact@v2
         with:
